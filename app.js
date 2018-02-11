@@ -63,6 +63,7 @@ function render() {
     `);
   }
 }
+const selectKitties = []
 
 
 function showListKitties(id, kitties){
@@ -71,21 +72,32 @@ function showListKitties(id, kitties){
   console.log(contador);
   let index = id.substring(3);
   let itemSelect = kitties[index];
-  if(contador === 1){
+  selectKitties.push(Number(index));
+
+  for (let i= 0; i<= selectKitties; i++){
+    if (selectKitties[i] === selectKitties[i+ 1]){
+      console.log("se repite");
+    }else {
+      console.log("no se repite")
+    }
+  }
+
+
+  /*if(contador === 1){
     $('.js-shopping-cart').append(`
       <li>
           <span>1 x ${itemSelect.name}</span>
           <span> = $ ${itemSelect.price}</span>
         </li>
     `)
-  }
-  
+  }*/
+  console.log(selectKitties);
 }
 
 
 function getIdKitties() {
   $('.js-gallery-list').on('click', '.kitty', function () {
-    var id = $(this).attr('class').split(' ')[1];  
+    var id = $(this).attr('class').split(' ')[1];
     showListKitties(id,kitties);
   });
 }
