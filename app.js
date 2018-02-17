@@ -64,15 +64,16 @@ let k0 = 0,
     k5 = 0,
     k6 = 0,
     k7 = 0;
-function comprobarClick(itemSelect){
-  if(itemSelect > 1){
-    console.log(itemSelect, "hay mas de uno");
+let catClick;
+function comprobarClick(selectCat, catClick){
+  if(catClick > 1){
+    console.log(catClick, "hay mas de uno");
   }else{
-    console.log(itemSelect, "solo hay uno");
+    console.log(catClick, "solo hay uno");
     $('.js-shopping-cart').append(`
       <li>
-          <span>1 x ${itemSelect.name}</span>
-          <span> = $ ${itemSelect.price}</span>
+          <span>1 x ${selectCat.name}</span>
+          <span> = $ ${selectCat.price}</span>
         </li>
     `)
   }
@@ -81,34 +82,42 @@ function contarKities(cat){
   switch (cat) {
     case 0:
       k0++
+      catClick = k0
       //comprobarClick(k0);
       break;
     case 1:
       k1++
+      catClick = k1
       //comprobarClick(k1);
       break;
     case 2:
       k2++
+      catClick = k2
       console.log("mi k2 es:", k2);
       break;
     case 3:
       k3++
+      catClick = k3
       console.log("mi k3 es:", k3);
       break;
     case 4:
       k4++
+      catClick = k4
       console.log("mi k4 es:", k4);
       break;
     case 5:
       k5++
+      catClick = k5
       console.log("mi k5 es:", k5);
       break;
     case 6:
       k6++
+      catClick = k6
       console.log("mi k6 es:", k6);
       break;
     case 7:
       k7++
+      catClick = k7
       console.log("mi k7 es:", k7);
       break;
   }
@@ -122,7 +131,7 @@ function showListKitties(id, kitties) {
   contarKities(gatito);
   const itemSelect= kitties[gatito].id;
   console.log("mi item select es", itemSelect)
-  comprobarClick(itemSelect);
+  comprobarClick(kitties[gatito], catClick);
     /*$('.js-shopping-cart').append(`
       <li>
           <span>1 x ${itemSelect.name}</span>
