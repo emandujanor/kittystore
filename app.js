@@ -63,16 +63,29 @@ let k0 = 0,
     k4 = 0,
     k5 = 0,
     k6 = 0,
-    k7 = 0
+    k7 = 0;
+function comprobarClick(itemSelect){
+  if(itemSelect > 1){
+    console.log(itemSelect, "hay mas de uno");
+  }else{
+    console.log(itemSelect, "solo hay uno");
+    $('.js-shopping-cart').append(`
+      <li>
+          <span>1 x ${itemSelect.name}</span>
+          <span> = $ ${itemSelect.price}</span>
+        </li>
+    `)
+  }
+}
 function contarKities(cat){
   switch (cat) {
     case 0:
       k0++
-      console.log("mi k0 es:", k0);
+      //comprobarClick(k0);
       break;
     case 1:
       k1++
-      console.log("mi k1 es:", k1)
+      //comprobarClick(k1);
       break;
     case 2:
       k2++
@@ -109,6 +122,7 @@ function showListKitties(id, kitties) {
   contarKities(gatito);
   const itemSelect= kitties[gatito].id;
   console.log("mi item select es", itemSelect)
+  comprobarClick(itemSelect);
     /*$('.js-shopping-cart').append(`
       <li>
           <span>1 x ${itemSelect.name}</span>
