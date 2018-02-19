@@ -40,8 +40,17 @@ nav .js-shopping-cart li {
   color: #fff;
   background: #3cc;
   text-align: right;
-  padding: 5px 30px;
+  padding: 5px 10px;
   border-bottom: 1px solid #fff;
+}
+nav .js-shopping-cart-items li {
+  color: #fff;
+  width: 100%;
+  background: #3cc;
+  text-align: right;
+  padding: 5px 5px;
+  border-bottom: 1px solid #fff;
+  list-style: none;
 }
 nav .js-shopping-cart .js-btn-buy {
   background-color: transparent;

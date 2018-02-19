@@ -43,7 +43,17 @@ var kitties = [
 ];
 
 var order = [];
-
+//Estos son los contadores de gatitos
+let k0 = 0,
+    k1 = 0,
+    k2 = 0,
+    k3 = 0,
+    k4 = 0,
+    k5 = 0,
+    k6 = 0,
+    k7 = 0;
+let catClick;
+//muestra cada uno de los gatitos en el HTML
 function render() {
   for (var i = 0; i < kitties.length; i++) {
     var kitty = kitties[i];
@@ -56,88 +66,75 @@ function render() {
     `);
   }
 }
-let k0 = 0,
-    k1 = 0,
-    k2 = 0,
-    k3 = 0,
-    k4 = 0,
-    k5 = 0,
-    k6 = 0,
-    k7 = 0;
-let catClick;
+//Muestra en el carrito de compras si es mas de uno y cual es el precio por la cantidad de gatitos seleccionados.
+function showInCart(selectCat, precioId, catClick, precioKities){
+
+  let spanCuantos = document.getElementById(selectCat.id);
+  let spanCuanto = document.getElementById(precioId);
+  spanCuantos.innerHTML = catClick;
+  spanCuanto.innerHTML = precioKities;
+}
+//verifica si ha sido seleccionado más de una vez el gatito
 function comprobarClick(selectCat, catClick){
+  let cantKittie = 1;
+  let precioKities = selectCat.price * catClick;
+  let precioId = "precio" + selectCat.id
   if(catClick > 1){
-    console.log(catClick, "hay mas de uno");
+    showInCart(selectCat, precioId, catClick, precioKities);
   }else{
-    console.log(catClick, "solo hay uno");
-    $('.js-shopping-cart').append(`
-      <li>
-          <span>1 x ${selectCat.name}</span>
-          <span> = $ ${selectCat.price}</span>
+    $('.js-shopping-cart-items').append(`
+        <li>
+            <span id = ${selectCat.id}>${cantKittie}</span>
+            <span> x ${selectCat.name} = $ </span>
+            <span id = ${precioId} > ${precioKities}</span>
         </li>
-    `)
+      `)
   }
 }
+//cuenta cuantas veces ha sido seleccionado cada gatito
 function contarKities(cat){
   switch (cat) {
     case 0:
       k0++
       catClick = k0
-      //comprobarClick(k0);
       break;
     case 1:
       k1++
       catClick = k1
-      //comprobarClick(k1);
       break;
     case 2:
       k2++
       catClick = k2
-      console.log("mi k2 es:", k2);
       break;
     case 3:
       k3++
       catClick = k3
-      console.log("mi k3 es:", k3);
       break;
     case 4:
       k4++
       catClick = k4
-      console.log("mi k4 es:", k4);
       break;
     case 5:
       k5++
       catClick = k5
-      console.log("mi k5 es:", k5);
       break;
     case 6:
       k6++
       catClick = k6
-      console.log("mi k6 es:", k6);
       break;
     case 7:
       k7++
       catClick = k7
-      console.log("mi k7 es:", k7);
       break;
   }
 }
+
 function showListKitties(id, kitties) {
-  /*let contador = 0;
-  contador++;
-  console.log(contador);*/
   let index = id.substring(3);
   gatito = Number(index);
   contarKities(gatito);
   const itemSelect= kitties[gatito].id;
-  console.log("mi item select es", itemSelect)
   comprobarClick(kitties[gatito], catClick);
-    /*$('.js-shopping-cart').append(`
-      <li>
-          <span>1 x ${itemSelect.name}</span>
-          <span> = $ ${itemSelect.price}</span>
-        </li>
-    `)*/
 }
 
 function getIdKitties() {
